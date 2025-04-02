@@ -2,16 +2,20 @@
     "manifest_version": 3,
     "name": "UGC Job Board Extension",
     "version": "1.0",
-    "description": "Scrape and display UGC job listings from Twirl, Vidsy, etc.",
-    "permissions": ["activeTab", "scripting"],
-    "action": {
-      "default_popup": "popup.html"
+    "description": "Scrape UGC job listings from platforms like Vidsy",
+    "permissions": ["scripting", "activeTab"],
+    "host_permissions": ["https://creator.vidsy.co/*"],
+    "background": {
+      "service_worker": "background.js"
     },
     "content_scripts": [
       {
-        "matches": ["<all_urls>"],
+        "matches": ["https://creator.vidsy.co/*"],
         "js": ["content.js"]
       }
-    ]
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    }
   }
   
